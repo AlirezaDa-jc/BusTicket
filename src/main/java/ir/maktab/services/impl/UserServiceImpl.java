@@ -66,6 +66,12 @@ public class UserServiceImpl extends BaseServiceImpl<User,Long, UserRepository> 
             ex.printStackTrace();
         }
     }
+
+    @Override
+    public User findByUserName(String userName) {
+        return baseRepository.findByUserName(userName);
+    }
+
     private void updatePassword(String currentPassword, String password, String confirmationPassword, ServletOutputStream out) throws IOException {
         if(!confirmationPassword.equals(password)){
             out.println("Wrong Password");

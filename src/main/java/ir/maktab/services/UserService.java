@@ -12,4 +12,5 @@ public interface UserService extends BaseService<User, Long> {
 
     void edit(ServletOutputStream servletOutputStream, String... fields);
 
+    User findByUserName(String userName);
 }

@@ -1,3 +1,4 @@
+<%@ page import="ir.maktab.MyApp" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +8,21 @@
 
 </head>
 <body>
+<%
+    if(!session.isNew()) {
+        String userName = null;
 
+        Cookie[] cookies = request.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("user")) userName = cookie.getValue();
+
+            }
+        }
+        MyApp.getUserService().findByUserName(userName);
+        response.sendRedirect("Menu.jsp");
+    }
+%>
 <div class="form-group" >
     <form class="px-4 py-3" name="form1" method="post" action="login">
         <div class="form-group">
