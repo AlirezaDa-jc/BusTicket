@@ -43,7 +43,7 @@
                     function setCookie() {
                     document.cookie = 'ticket='+<%=ticket.getId()%>
                     }
-                    setCookie()">></td>
+                    setCookie()"></td>
             <td><input type="number" form="my_form" name="ticketID" hidden readonly value="<%=ticket.getId()%>"><%=ticket.getId()%></td>
         </tr>
         <%}%>
