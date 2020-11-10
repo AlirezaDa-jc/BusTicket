@@ -23,7 +23,7 @@
     </form>
     <div class="dropdown-divider"></div>
     <button type="submit" class="btn btn-primary" onclick="function signUp() {
-           location.href = '/SignUp.html';
+           location.href = 'SignUp.jsp';
         }
         signUp()">Sign Up</button>
 

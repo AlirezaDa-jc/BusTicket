@@ -1,5 +1,6 @@
 <%@ page import="ir.maktab.MyApp" %>
-<%@ page import="ir.maktab.domains.Ticket" %><%--
+<%@ page import="ir.maktab.domains.Ticket" %>
+<%--
   Created by IntelliJ IDEA.
   User: Alireza
   Date: 11/10/2020
@@ -61,6 +62,8 @@
     </tr>
     <tr><td colspan="2">    <button type="submit" class="btn btn-primary" onclick="function refuse(){
            <%
+                ticket.getUser().removeTicket(ticket);
+                ticket.getRoute().removeTicket(ticket);
                 MyApp.getTicketService().delete(ticket);
            %>
         }

@@ -41,7 +41,9 @@ public class Route extends BaseEntity<Long> {
     public void setTime(String time) {
         this.time = time;
     }
-
+    public void removeTicket(Ticket ticket){
+        tickets.remove(ticket);
+    }
     public String getFirstCity() {
         return firstCity;
     }

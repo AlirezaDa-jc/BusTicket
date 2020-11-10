@@ -23,7 +23,7 @@ public class SignInServlet extends HttpServlet {
         UserService userService = MyApp.getUserService();
         if(userService.signIn(userName,password)){
             out.println("Welcome  " + userName);
-            out.println("<a href=\"menu\">Menu!</a>");
+            resp.sendRedirect("SuccessfulLogin.jsp");
         }else{
             out.println("User Already Registered!");
             out.println("<a href=\"login.jsp\">Login!</a><br><br>");

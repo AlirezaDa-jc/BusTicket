@@ -23,6 +23,9 @@ public class User extends BaseEntity<Long> {
         return tickets;
     }
 
+    public void removeTicket(Ticket ticket){
+        tickets.remove(ticket);
+    }
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
     }
