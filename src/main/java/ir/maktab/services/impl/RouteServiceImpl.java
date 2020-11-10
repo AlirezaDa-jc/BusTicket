@@ -6,6 +6,7 @@ import ir.maktab.base.services.impl.BaseServiceImpl;
 import ir.maktab.domains.Route;
 import ir.maktab.services.RouteService;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -46,6 +47,7 @@ public class RouteServiceImpl extends BaseServiceImpl<Route, Long, RouteReposito
     @Override
     public List<Route> findRoutes(Route route) {
         routes = baseRepository.findAll().stream()
+                .sorted(Comparator.comparing(Route::getTime))
                 .filter((c) -> c.equals(route))
                 .collect(Collectors.toList());
         if(routes.size() == 0 ){

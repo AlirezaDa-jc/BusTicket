@@ -53,6 +53,7 @@
         <tr>
             <td><%=route.getTime()%></td>
             <td><input form="my_form" type="submit" value="select"></td>
+<%--            <td><input type="number" form="my_form" name="routeID" hidden readonly value="<%=route.getId()%>"><%=route.getId()%></td>--%>
             <td><input type="number" form="my_form" name="routeID" hidden readonly value="<%=route.getId()%>"><%=route.getId()%></td>
         </tr>
         <%}%>
