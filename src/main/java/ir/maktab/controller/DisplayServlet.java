@@ -21,10 +21,19 @@ public class DisplayServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         resp.setContentType("text/html");
         PrintWriter out = resp.getWriter();
-        String ticketID = req.getParameter("ticketID");
-        Long id = Long.valueOf(ticketID);
+        String id = null;
+        Cookie[] cookies = req.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("ticket")) id = cookie.getValue();
+
+            }
+        }
+        Long ticketID = Long.parseLong(id);
+//        String ticketID = req.getParameter("ticketID");
+//        Long id = Long.valueOf(ticketID);
         TicketService ticketService = MyApp.getTicketService();
-        Ticket byId = ticketService.findById(id);
+        Ticket byId = ticketService.findById(ticketID);
         Cookie ticket = new Cookie("ticket",byId.getId().toString());
         resp.addCookie(ticket);
         resp.sendRedirect("DisplayDetailedTicket.jsp");

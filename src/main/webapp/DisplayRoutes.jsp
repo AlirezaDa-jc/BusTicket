@@ -35,9 +35,11 @@
 
     <table class="table">
         <tr class="table-warning">
-            <td colspan="2">Route:<%=routes.get(0).getFirstCity()%> To <%=routes.get(0).getSecondCity()%></td>
+            <td colspan="2">Route:<%=routes.get(0).getFirstCity()%> To <%=routes.get(0).getSecondCity()%>
+            </td>
 
-            <td>Date:<%=routes.get(0).getDate()%></td>
+            <td>Date:<%=routes.get(0).getDate()%>
+            </td>
         </tr>
         <thead>
         <tr class="table-danger" style="color: white">
@@ -51,10 +53,18 @@
 
         <%for (Route route : routes) {%>
         <tr>
-            <td><%=route.getTime()%></td>
-            <td><input form="my_form" type="submit" value="select"></td>
-<%--            <td><input type="number" form="my_form" name="routeID" hidden readonly value="<%=route.getId()%>"><%=route.getId()%></td>--%>
-            <td><input type="number" form="my_form" name="routeID" hidden readonly value="<%=route.getId()%>"><%=route.getId()%></td>
+            <td><%=route.getTime()%>
+            </td>
+            <td><input form="my_form" type="submit" value="select" onclick="
+                    function setCookie() {
+                            document.cookie = 'route='+<%=route.getId()%>
+                        }
+                        setCookie()">
+            </td>
+            <%--            <td><input type="number" form="my_form" name="routeID" hidden readonly value="<%=route.getId()%>"><%=route.getId()%></td>--%>
+            <td><input type="number" form="my_form" name="routeID" hidden readonly
+                       value="<%=route.getId()%>"><%=route.getId()%>
+            </td>
         </tr>
         <%}%>
         </tbody>

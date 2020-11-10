@@ -20,8 +20,19 @@ public class BuyTicketServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        Long routeID = Long.valueOf(req.getParameter("routeID"));
-        Route byId = MyApp.getRouteService().findById(routeID);
+        String id = null;
+
+        Cookie[] cookies = req.getCookies();
+        if(cookies !=null){
+            for(Cookie cookie : cookies){
+                if(cookie.getName().equals("route")) id = cookie.getValue();
+
+            }
+        }
+        Long routeId = Long.parseLong(id);
+        Route byId = MyApp.getRouteService().findById(routeId);
+//        Long routeID = Long.valueOf(req.getParameter("routeID"));
+//        Route byId = MyApp.getRouteService().findById(routeID);
         RouteServiceImpl.setRoute(byId);
         resp.sendRedirect("buyticket.jsp");
     }

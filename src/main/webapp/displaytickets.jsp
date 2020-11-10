@@ -39,7 +39,11 @@
         <%for (Ticket ticket : tickets) {%>
         <tr>
             <td><%=ticket.getRoute().getDate()%></td>
-            <td><input form="my_form" type="submit" value="select"></td>
+            <td><input form="my_form" type="submit" value="select" onclick="
+                    function setCookie() {
+                    document.cookie = 'ticket='+<%=ticket.getId()%>
+                    }
+                    setCookie()">></td>
             <td><input type="number" form="my_form" name="ticketID" hidden readonly value="<%=ticket.getId()%>"><%=ticket.getId()%></td>
         </tr>
         <%}%>
